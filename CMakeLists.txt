@@ -1,9 +1,11 @@
 cmake_minimum_required(VERSION 3.0 FATAL_ERROR)
 project(face_recognition)
-
+set(CMAKE_CXX_STANDARD 14)
 find_package( Protobuf REQUIRED)
 find_package(Torch REQUIRED)
+find_package( CUDA REQUIRED)
+include_directories(${CUDA_INCLUDE_DIRS})
 add_executable(face_recognition main.cpp)
 target_link_libraries(face_recognition ${PROTO})
 target_link_libraries(face_recognition ${TORCH_LIBRARIES})
-
+target_link_libraries(face_recognition ${CUDA_LIBRARIES})
