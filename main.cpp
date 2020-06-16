@@ -7,7 +7,7 @@ using namespace torch::nn;
 int main() {
 
 	std::shared_ptr<torch::jit::script::Module> net; //!< the neural network for face landmarks
-	net = make_shared<torch::jit::script::Module>(torch::jit::load("/var/fcs_res/MobileNetv2_Adam_01_Eyes_Norm_Without_Flip_v2_70epochs.pt", Device("cuda")));
+	net = make_shared<torch::jit::script::Module>(torch::jit::load("/home/tps/face_recognition_github/Model_without_train.pt", Device("cuda")));
 	cout << "warming up..." << endl;
 	for(int i = 0; i < 5; i++){
 		net->eval();
