@@ -18,7 +18,7 @@ int main() {
 		inputs.push_back(tensor);
 		Tensor output = net->forward(inputs).toTensor();
 		output = output.to("cpu");
-		cout << output << "output size" << output.size() << endl;
+		cout << output << "output size" << at::size(output) << endl;
 	}
 	cout << "warm up ended" << endl << endl;
 	return 0;
