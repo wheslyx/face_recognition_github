@@ -9,6 +9,7 @@ int main() {
 	std::shared_ptr<torch::jit::script::Module> net; //!< the neural network for face landmarks
 	net = make_shared<torch::jit::script::Module>(torch::jit::load("/home/tps/FaceNet_Classify_Directly_Frontal_Aligment_7epochs.pt", Device("cuda")));
 	cout << "warming up..." << endl;
+	int dim = 0;
 	for(int i = 0; i < 5; i++){
 		net->eval();
 		NoGradGuard guard;
@@ -18,7 +19,7 @@ int main() {
 		inputs.push_back(tensor);
 		Tensor output = net->forward(inputs).toTensor();
 		output = output.to("cpu");
-		cout << output << "output size" << at::size(output) << endl;
+		cout << output << "output size" << at::size(output,dim) << endl;
 	}
 	cout << "warm up ended" << endl << endl;
 	return 0;
