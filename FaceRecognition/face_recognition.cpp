@@ -256,12 +256,7 @@ https://github.com/MasteringOpenCV/code/blob/master/Chapter8_FaceRecognition/pre
 
 		@return true if a found were found and preprocessed; otherwise, false
 		*/
-		bool FaceRecognition::preprocessedFace(cv::Mat img, cv::Mat &face, cv::Rect &rectFace){
-			std::vector<cv::Rect> rectangles = faceDetector.getFaces(img);
-			if(rectangles.empty()){
-				return false;
-			}
-			rectFace = rectangles[0];
+		bool FaceRecognition::preprocessedFace(cv::Mat img, cv::Mat &face,cv::Rect &rectFace){
 			
 			if(modelEyes != nullptr){
 				faceAlignment(img , rectFace, face);
@@ -285,7 +280,7 @@ https://github.com/MasteringOpenCV/code/blob/master/Chapter8_FaceRecognition/pre
 		@param embedderModel a path for the embedder model (.t7) 
 
 		*/
-		FaceRecognition::FaceRecognition(std::string embedderModel){
+		FaceRecognition::FaceRecognition(cv::Rect rectangles, std::string embedderModel){
 
 			faceEmbedder = cv::dnn::readNetFromTorch(embedderModel);
 			faceEmbedder.setPreferableBackend(cv::dnn::DNN_BACKEND_CUDA);
@@ -311,7 +306,7 @@ https://github.com/MasteringOpenCV/code/blob/master/Chapter8_FaceRecognition/pre
 		@param nameTxt a path for the names of the people labeled (.txt)
 
 		*/
-		FaceRecognition::FaceRecognition(std::string embedderModel, std::string svmModel, std::string nameTxt){
+		FaceRecognition::FaceRecognition(cv::Rect rectangles, std::string embedderModel, std::string svmModel, std::string nameTxt){
 			
 			faceEmbedder = cv::dnn::readNetFromTorch(embedderModel);
 			faceEmbedder.setPreferableBackend(cv::dnn::DNN_BACKEND_CUDA);

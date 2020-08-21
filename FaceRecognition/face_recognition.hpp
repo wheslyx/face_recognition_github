@@ -30,7 +30,7 @@ class FaceRecognition {
 		std::shared_ptr<Model> modelEyes; //!< the model only for eyes landmarks from pytorch
 		std::pair<int,int> rangeLeftEye; //!< range of position of the landmarks of the left eye
 		std::pair<int,int> rangeRightEye; //!< range of position of the landmarks of the right eye
-		
+		std::vector<cv::Rect> rectangles;
 
 		/*!
 		@brief give the current time in milliseconds.
@@ -150,7 +150,7 @@ class FaceRecognition {
 
 		@return true if a found were found and preprocessed; otherwise, false
 		*/
-		bool preprocessedFace(cv::Mat img, cv::Mat &face, cv::Rect &rectFace);
+		bool preprocessedFace(cv::Mat img, cv::Mat &face,cv::Rect &rectFace);
 		
 	public:
 		
@@ -165,7 +165,7 @@ class FaceRecognition {
 		@param embedderModel a path for the embedder model (.t7)
 
 		*/
-		FaceRecognition(std::string embedderModel);
+		FaceRecognition(cv::Rect rectangles, std::string embedderModel);
 		
 		/*!
 		@brief Constructor for predicting
@@ -181,7 +181,7 @@ class FaceRecognition {
 		@param nameTxt a path for the names of the people labeled (.txt)
 
 		*/
-		FaceRecognition(std::string embedderModel, std::string svmModel, std::string nameTxt);
+		FaceRecognition(cv::Rect rectangles, std::string embedderModel, std::string svmModel, std::string nameTxt);
 		
 		/*!
 		@brief Face Recignition destructor
