@@ -1,27 +1,31 @@
-#include <torch/torch.h>
-#include <torch/script.h>
-using namespace std;
-using namespace torch;
-using namespace torch::nn;
-
+#include "FaceRecognition/face_recognition.hpp"
+#include "constants.h"
 int main() {
+	
+	FaceDetector faceDetector;
+	Model modelEyes(EYESLANDMARKS, 256 , false , {0.485, 0.456, 0.406} ,{0.229, 0.224, 0.225});
+	/*
+	FaceRecognition recognizer(faceDetector, FACE_RECOGNITION);
+	
+	recognizer.addEyesModel(modelEyes, {20, 39}, {0, 19});
+	
+	std::string trainPath = "/media/disk/dataset_test";
+	
+	recognizer.train(trainPath, RECOGNITION_WEIGHTS);
+	
+	std::string svmModel = "/media/disk/svmModel/recognizer.xml";
+	*/
+	std::string labelsTxt = "/media/disk/svmModel/labels.txt";
+	
+	FaceRecognition recognizer(faceDetector, FACE_RECOGNITION , RECOGNITION_WEIGHTS, labelsTxt);
+	recognizer.addEyesModel(modelEyes, {20, 39}, {0, 19});
+	
+	//real time
+	std::string pathInputVideo = "";
+	std::string pathOutputVideo= "/media/disk/video_test/face_recognition.avi";
 
-	std::shared_ptr<torch::jit::script::Module> net; //!< the neural network for face landmarks
-	net = make_shared<torch::jit::script::Module>(torch::jit::load("/home/tps/FaceNet_Directly_Frontal_Alignment_ResNet18_5epochs.pt", Device("cuda")));
-	cout << "warming up..." << endl;
-	int dim = 1;
-	for(int i = 0; i < 5; i++){
-		net->eval();
-		NoGradGuard guard;
-		torch::Tensor tensor = torch::randn({1,3,256, 256});
-		tensor = tensor.to("cuda");
-		vector<torch::jit::IValue> inputs;
-		inputs.push_back(tensor);
-		Tensor output = net->forward(inputs).toTensor();
-		output = output.to("cpu");
-		cout << output << "output size" << at::size(output,dim) << endl;
-	}
-	cout << "warm up ended" << endl << endl;
+	recognizer.runVideo(pathInputVideo, pathOutputVideo);
+
 	return 0;
 }
 
