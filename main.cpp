@@ -1,4 +1,5 @@
 #include "FaceRecognition/face_recognition.hpp"
+#include "FaceDetector/face_detector.hpp"
 #include "constants.h"
 int main() {
 	
