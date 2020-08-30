@@ -689,7 +689,7 @@ https://github.com/MasteringOpenCV/code/blob/master/Chapter8_FaceRecognition/pre
 				}
 				cv::Rect rectFace = cv::Rect(20,20,80,80);
 				long double startrun = getTime();
-				std::pair<std::string,float> prediction = recognize(frame, rectFace;
+				std::pair<std::string,float> prediction = recognize(frame, rectFace);
 				std::cout << "just after recognize" << std::endl;
 				long double endrun = getTime();
 				std::string name = prediction.first;

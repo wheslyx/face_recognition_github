@@ -220,7 +220,7 @@ class FaceRecognition {
 
 		@return a string and confidence of the name predicted 
 		*/
-		std::pair<std::string,float> recognize(cv::Mat &img, cv::Rect &rectFace, int minFrequency);
+		std::pair<std::string,float> recognize(cv::Mat &img, cv::Rect &rectFace);
 		
 		/*!
 		@brief Test the performance of the model with a path containing a group of directory of images for each person
