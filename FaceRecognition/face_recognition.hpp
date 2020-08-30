@@ -165,7 +165,7 @@ class FaceRecognition {
 		@param embedderModel a path for the embedder model (.t7)
 
 		*/
-		FaceRecognition(cv::Rect rectangles, std::string embedderModel);
+		FaceRecognition(std::string embedderModel);
 		
 		/*!
 		@brief Constructor for predicting
@@ -181,7 +181,7 @@ class FaceRecognition {
 		@param nameTxt a path for the names of the people labeled (.txt)
 
 		*/
-		FaceRecognition(cv::Rect rectangles, std::string embedderModel, std::string svmModel, std::string nameTxt);
+		FaceRecognition(std::string embedderModel, std::string svmModel, std::string nameTxt);
 		
 		/*!
 		@brief Face Recignition destructor

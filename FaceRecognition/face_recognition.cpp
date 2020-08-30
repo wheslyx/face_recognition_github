@@ -280,7 +280,7 @@ https://github.com/MasteringOpenCV/code/blob/master/Chapter8_FaceRecognition/pre
 		@param embedderModel a path for the embedder model (.t7) 
 
 		*/
-		FaceRecognition::FaceRecognition(cv::Rect rectangles, std::string embedderModel){
+		FaceRecognition::FaceRecognition(std::string embedderModel){
 
 			faceEmbedder = cv::dnn::readNetFromTorch(embedderModel);
 			faceEmbedder.setPreferableBackend(cv::dnn::DNN_BACKEND_CUDA);
@@ -306,7 +306,7 @@ https://github.com/MasteringOpenCV/code/blob/master/Chapter8_FaceRecognition/pre
 		@param nameTxt a path for the names of the people labeled (.txt)
 
 		*/
-		FaceRecognition::FaceRecognition(cv::Rect rectangles, std::string embedderModel, std::string svmModel, std::string nameTxt){
+		FaceRecognition::FaceRecognition(std::string embedderModel, std::string svmModel, std::string nameTxt){
 			
 			faceEmbedder = cv::dnn::readNetFromTorch(embedderModel);
 			faceEmbedder.setPreferableBackend(cv::dnn::DNN_BACKEND_CUDA);
