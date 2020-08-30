@@ -474,8 +474,8 @@ https://github.com/MasteringOpenCV/code/blob/master/Chapter8_FaceRecognition/pre
 					std::cout << "Problem loading image " << filenames[i] << std::endl;		
 				} else {
 					double startTime = getTime();
-					cv::Rect rectFace;
-					std::pair<std::string,float> prediction = recognize(img, rectFace, (int)labels.size() - 2);
+					cv::Rect rectFace = cv::Rect(20,20,80,80);
+					std::pair<std::string,float> prediction = recognize(img, rectFace);
 					std::string predicted = prediction.first;
 					float proba = prediction.second;
 					if(predicted == "no face detected" || proba < 0.5){
