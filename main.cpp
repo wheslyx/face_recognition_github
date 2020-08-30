@@ -26,6 +26,7 @@ int main() {
 	std::string pathOutputVideo= "/media/disk/video_test/face_recognition.avi";
 
 	recognizer.runVideo(pathInputVideo, pathOutputVideo);
+	
 
 	return 0;
 }

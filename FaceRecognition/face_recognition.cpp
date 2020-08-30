@@ -258,6 +258,9 @@ https://github.com/MasteringOpenCV/code/blob/master/Chapter8_FaceRecognition/pre
 		*/
 		bool FaceRecognition::preprocessedFace(cv::Mat img, cv::Mat &face,cv::Rect &rectFace){
 			
+			if(!img || !rectFace) {
+				return false;
+			}
 			if(modelEyes != nullptr){
 				faceAlignment(img , rectFace, face);
 			} else{
@@ -382,7 +385,6 @@ https://github.com/MasteringOpenCV/code/blob/master/Chapter8_FaceRecognition/pre
 		*/
 		std::pair<std::string,float> FaceRecognition::recognize(cv::Mat &img, cv::Rect &rectFace){
 			cv::Mat face;
-			
 			if(!preprocessedFace(img , face , rectFace)){
 				std::string fail = "no face detected";
 				float failConfidence = 0.0;
@@ -478,7 +480,7 @@ https://github.com/MasteringOpenCV/code/blob/master/Chapter8_FaceRecognition/pre
 					std::pair<std::string,float> prediction = recognize(img, rectFace);
 					std::string predicted = prediction.first;
 					float proba = prediction.second;
-					if(predicted == "no face detected" || proba < 0.5){
+					if(predicted == "no face detected" || proba < RECOGNITION_THRESHOLD){
 						continue;
 					}
 					totalTime += getTime() - startTime;
@@ -690,11 +692,10 @@ https://github.com/MasteringOpenCV/code/blob/master/Chapter8_FaceRecognition/pre
 				cv::Rect rectFace = cv::Rect(20,20,80,80);
 				long double startrun = getTime();
 				std::pair<std::string,float> prediction = recognize(frame, rectFace);
-				std::cout << "just after recognize" << std::endl;
 				long double endrun = getTime();
 				std::string name = prediction.first;
 				float proba = prediction.second;
-				if(!(name == "no face detected" || proba < 0.5)){
+				if(!(name == "no face detected" || proba < RECOGNITION_THRESHOLD)){
 					cv::rectangle(frame ,rectFace, cv::Scalar( 255, 0, 0 ));
 					int yDraw = rectFace.y - 10;
 					if(yDraw <= 10){

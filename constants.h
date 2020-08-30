@@ -43,6 +43,10 @@
 #define RECOGNITION_WEIGHTS "/media/disk/svmModel"
 #endif
 
+#ifndef RECOGNITION_THRESHOLD
+#define RECOGNITION_THRESHOLD 0.5
+#endif
+
 #ifndef USB_GPS_PORT
 #define USB_GPS_PORT "/dev/ttyTHS2"
 #endif
