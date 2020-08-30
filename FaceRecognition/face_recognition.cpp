@@ -1,5 +1,5 @@
 /*!
-@file face_recognition.h 
+@file face_recognition.h  
 
 @brief C++ functions for face recognition using opencv
 
@@ -676,6 +676,7 @@ https://github.com/MasteringOpenCV/code/blob/master/Chapter8_FaceRecognition/pre
 			int frame_width = cap.get(cv::CAP_PROP_FRAME_WIDTH); 
 			int frame_height = cap.get(cv::CAP_PROP_FRAME_HEIGHT);
 			cv::VideoWriter video;
+			std::cout << "MJPG" << std::endl;
 			if(!pathOutputVideo.empty()){
 				video = cv::VideoWriter(pathOutputVideo ,cv::VideoWriter::fourcc('M','J','P','G'),10, cv::Size(frame_width,frame_height));
 			} 
@@ -688,6 +689,7 @@ https://github.com/MasteringOpenCV/code/blob/master/Chapter8_FaceRecognition/pre
 				}
 				cv::Rect rectFace;
 				long double startrun = getTime();
+				std::cout << "just before recognize" << std::endl;
 				std::pair<std::string,float> prediction = recognize(frame, rectFace, (int)labels.size() - 2);
 				long double endrun = getTime();
 				std::string name = prediction.first;
