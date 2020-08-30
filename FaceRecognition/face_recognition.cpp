@@ -311,7 +311,7 @@ https://github.com/MasteringOpenCV/code/blob/master/Chapter8_FaceRecognition/pre
 			faceEmbedder = cv::dnn::readNetFromTorch(embedderModel);
 			faceEmbedder.setPreferableBackend(cv::dnn::DNN_BACKEND_CUDA);
 			faceEmbedder.setPreferableTarget(cv::dnn::DNN_TARGET_CUDA); 
-
+			minFrequency = (int) nameTxt.size() - 2;
 			std::ifstream input(nameTxt);
 			std::vector<std::pair<int,std::string>> dataPerson;
 			int idPerson;
@@ -380,8 +380,9 @@ https://github.com/MasteringOpenCV/code/blob/master/Chapter8_FaceRecognition/pre
 
 		@return a string and confidence of the name predicted 
 		*/
-		std::pair<std::string,float> FaceRecognition::recognize(cv::Mat &img, cv::Rect &rectFace, int minFrequency){
+		std::pair<std::string,float> FaceRecognition::recognize(cv::Mat &img, cv::Rect &rectFace){
 			cv::Mat face;
+			
 			if(!preprocessedFace(img , face , rectFace)){
 				std::string fail = "no face detected";
 				float failConfidence = 0.0;
@@ -676,7 +677,6 @@ https://github.com/MasteringOpenCV/code/blob/master/Chapter8_FaceRecognition/pre
 			int frame_width = cap.get(cv::CAP_PROP_FRAME_WIDTH); 
 			int frame_height = cap.get(cv::CAP_PROP_FRAME_HEIGHT);
 			cv::VideoWriter video;
-			std::cout << "MJPG" << std::endl;
 			if(!pathOutputVideo.empty()){
 				video = cv::VideoWriter(pathOutputVideo ,cv::VideoWriter::fourcc('M','J','P','G'),10, cv::Size(frame_width,frame_height));
 			} 
@@ -687,10 +687,10 @@ https://github.com/MasteringOpenCV/code/blob/master/Chapter8_FaceRecognition/pre
 				if(frame.empty()){
 					break;
 				}
-				cv::Rect rectFace;
+				cv::Rect rectFace = cv::Rect(20,20,80,80);
 				long double startrun = getTime();
-				std::cout << "just before recognize" << std::endl;
-				std::pair<std::string,float> prediction = recognize(frame, rectFace, (int)labels.size() - 2);
+				std::pair<std::string,float> prediction = recognize(frame, rectFace;
+				std::cout << "just after recognize" << std::endl;
 				long double endrun = getTime();
 				std::string name = prediction.first;
 				float proba = prediction.second;

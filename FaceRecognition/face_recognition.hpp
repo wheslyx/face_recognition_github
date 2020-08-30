@@ -1,5 +1,5 @@
 #ifndef FACE_RECOGNITION_H
-#define FACE_RECOGNITION_H
+#define FACE_RECOGNITION_H 
 
 /*!
 @file face_recognition.h
@@ -31,7 +31,7 @@ class FaceRecognition {
 		std::pair<int,int> rangeLeftEye; //!< range of position of the landmarks of the left eye
 		std::pair<int,int> rangeRightEye; //!< range of position of the landmarks of the right eye
 		std::vector<cv::Rect> rectangles;
-
+		int minFrequency;
 		/*!
 		@brief give the current time in milliseconds.
 		

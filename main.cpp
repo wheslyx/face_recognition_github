@@ -4,7 +4,6 @@
 int main() {
 	
 	FaceDetector faceDetector;
-	cv::Rect rectangles;
 	Model modelEyes(EYESLANDMARKS, 256 , false , {0.485, 0.456, 0.406} ,{0.229, 0.224, 0.225});
 	/*
 	FaceRecognition recognizer(faceDetector, FACE_RECOGNITION);
@@ -19,7 +18,7 @@ int main() {
 	*/
 	std::string labelsTxt = "/media/disk/svmModel/labels.txt";
 	
-	FaceRecognition recognizer(rectangles, FACE_RECOGNITION , RECOGNITION_WEIGHTS, labelsTxt);
+	FaceRecognition recognizer(FACE_RECOGNITION , RECOGNITION_WEIGHTS, labelsTxt);
 	recognizer.addEyesModel(modelEyes, {20, 39}, {0, 19});
 	
 	//real time
