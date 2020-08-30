@@ -258,7 +258,7 @@ https://github.com/MasteringOpenCV/code/blob/master/Chapter8_FaceRecognition/pre
 		*/
 		bool FaceRecognition::preprocessedFace(cv::Mat img, cv::Mat &face,cv::Rect &rectFace){
 			
-			if(!img || !rectFace) {
+			if(rectFace == cv::Rect(0,0,0,0)) {
 				return false;
 			}
 			if(modelEyes != nullptr){
