@@ -480,7 +480,7 @@ https://github.com/MasteringOpenCV/code/blob/master/Chapter8_FaceRecognition/pre
 					std::pair<std::string,float> prediction = recognize(img, rectFace);
 					std::string predicted = prediction.first;
 					float proba = prediction.second;
-					if(predicted == "no face detected" || proba < RECOGNITION_THRESHOLD){
+					if(predicted == "no face detected" || proba < 0.5){
 						continue;
 					}
 					totalTime += getTime() - startTime;
@@ -695,7 +695,7 @@ https://github.com/MasteringOpenCV/code/blob/master/Chapter8_FaceRecognition/pre
 				long double endrun = getTime();
 				std::string name = prediction.first;
 				float proba = prediction.second;
-				if(!(name == "no face detected" || proba < RECOGNITION_THRESHOLD)){
+				if(!(name == "no face detected" || proba < 0.5)){
 					cv::rectangle(frame ,rectFace, cv::Scalar( 255, 0, 0 ));
 					int yDraw = rectFace.y - 10;
 					if(yDraw <= 10){
