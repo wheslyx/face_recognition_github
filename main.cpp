@@ -55,6 +55,7 @@ int main() {
 			break;
 		}
 		std::vector<cv::Rect> rectFaces = faceDetector.getFaces(frame);
+		std::cout << "rectangles : " << rectFaces << std::endl;
 		cv::Rect rectFace = rectFaces[0];
 		std::cout << "rectangle : " << rectFace << std::endl;
 		long double startrun = recognizer.getTime();
