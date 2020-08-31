@@ -55,6 +55,9 @@ int main() {
 			break;
 		}
 		std::vector<cv::Rect> rectFaces = faceDetector.getFaces(frame);
+		if (rectFaces.empty()) {
+			continue;
+		}
 		std::cout << "rectangles : " << rectFaces << std::endl;
 		cv::Rect rectFace = rectFaces[0];
 		std::cout << "rectangle : " << rectFace << std::endl;
