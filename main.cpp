@@ -56,6 +56,7 @@ int main() {
 		}
 		std::vector<cv::Rect> rectFaces = faceDetector.getFaces(frame);
 		cv::Rect rectFace = rectFaces[0];
+		std::cout << "rectangle : " << rectFace << std::endl;
 		long double startrun = recognizer.getTime();
 		std::pair<std::string,float> prediction = recognizer.recognize(frame, rectFace);
 		long double endrun = recognizer.getTime();
