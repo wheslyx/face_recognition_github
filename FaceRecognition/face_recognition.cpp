@@ -391,7 +391,7 @@ https://github.com/MasteringOpenCV/code/blob/master/Chapter8_FaceRecognition/pre
 		*/
 		std::pair<std::string,float> FaceRecognition::recognize(cv::Mat &img, cv::Rect &rectFace){
 			cv::Mat face;
-			int minFrequency = (int) nameTxt.size() - 2;
+			int minFrequency = (int)labels.size() - 2
 			std::cout << "min frequency = " <<  minFrequency << std::endl;
 			if(!preprocessedFace(img , face , rectFace)){
 				std::cout << "0" << std::endl;
