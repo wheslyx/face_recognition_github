@@ -321,7 +321,6 @@ https://github.com/MasteringOpenCV/code/blob/master/Chapter8_FaceRecognition/pre
 			faceEmbedder = cv::dnn::readNetFromTorch(embedderModel);
 			faceEmbedder.setPreferableBackend(cv::dnn::DNN_BACKEND_CUDA);
 			faceEmbedder.setPreferableTarget(cv::dnn::DNN_TARGET_CUDA); 
-			minFrequency = (int) nameTxt.size() - 2;
 			std::ifstream input(nameTxt);
 			std::vector<std::pair<int,std::string>> dataPerson;
 			int idPerson;
@@ -392,6 +391,8 @@ https://github.com/MasteringOpenCV/code/blob/master/Chapter8_FaceRecognition/pre
 		*/
 		std::pair<std::string,float> FaceRecognition::recognize(cv::Mat &img, cv::Rect &rectFace){
 			cv::Mat face;
+			int minFrequency = (int) nameTxt.size() - 2;
+			std::cout << "min frequency = " <<  minFrequency << std::endl;
 			if(!preprocessedFace(img , face , rectFace)){
 				std::cout << "0" << std::endl;
 				std::string fail = "no face detected";
