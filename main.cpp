@@ -39,7 +39,7 @@ int main() {
 		} else{
 			std::cout << "No video found" << std::endl;
 		}
-		return;
+		return 0;
 	}
 	int frame_width = cap.get(cv::CAP_PROP_FRAME_WIDTH); 
 	int frame_height = cap.get(cv::CAP_PROP_FRAME_HEIGHT);
@@ -56,9 +56,9 @@ int main() {
 		}
 		std::vector<cv::Rect> rectFaces = faceDetector.getFaces(frame);
 		cv::Rect rectFace = rectFaces[0];
-		long double startrun = getTime();
-		std::pair<std::string,float> prediction = recognize(frame, rectFace);
-		long double endrun = getTime();
+		long double startrun = recognizer.getTime();
+		std::pair<std::string,float> prediction = recognizer.recognize(frame, rectFace);
+		long double endrun = recognizer.getTime();
 		std::string name = prediction.first;
 		float recognition_confidence = prediction.second;
 		if(!(name == "no face detected" || recognition_confidence < RECOGNITION_THRESHOLD)){
