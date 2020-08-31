@@ -57,7 +57,7 @@ int main() {
 		std::vector<cv::Rect> rectFaces = faceDetector.getFaces(frame);
 		cv::Rect rectFace = rectFaces[0];
 		long double startrun = recognizer.getTime();
-		std::pair<std::string,float> prediction = recognizer.recognize(&frame, &rectFace);
+		std::pair<std::string,float> prediction = recognizer.recognize(frame, rectFace);
 		long double endrun = recognizer.getTime();
 		std::string name = prediction.first;
 		float recognition_confidence = prediction.second;
@@ -85,6 +85,7 @@ int main() {
 			break;
 		}
 		std::cout << "FPS = " << std::fixed << std::setprecision(1) << 1000/(endrun - startrun) << std::endl;
+		std::cout << "Name is " << name << " "<< "Probability is " << recognition_confidence <<std::endl;
 	}
 	cap.release();
 	if(!pathOutputVideo.empty()){
