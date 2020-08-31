@@ -57,7 +57,7 @@ int main() {
 		std::vector<cv::Rect> rectFaces = faceDetector.getFaces(frame);
 		cv::Rect rectFace = rectFaces[0];
 		long double startrun = recognizer.getTime();
-		std::pair<std::string,float> prediction = recognizer.recognize(frame, rectFace);
+		std::pair<std::string,float> prediction = recognizer.recognize(&frame, &rectFace);
 		long double endrun = recognizer.getTime();
 		std::string name = prediction.first;
 		float recognition_confidence = prediction.second;
