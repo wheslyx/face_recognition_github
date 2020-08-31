@@ -32,14 +32,7 @@ class FaceRecognition {
 		std::pair<int,int> rangeRightEye; //!< range of position of the landmarks of the right eye
 		std::vector<cv::Rect> rectangles;
 		int minFrequency;
-		/*!
-		@brief give the current time in milliseconds.
 		
-		@param none
-
-		@return time in milliseconds
-		*/
-		long double getTime();
 		
 		/*!
 		@brief give the directory of the path.
@@ -294,6 +287,15 @@ class FaceRecognition {
 		*/
 		
 		void runVideo(std::string pathInputVideo, std::string pathOutputVideo);
+
+		/*!
+		@brief give the current time in milliseconds.
+		
+		@param none
+
+		@return time in milliseconds
+		*/
+		long double getTime();
 	
 };
 
