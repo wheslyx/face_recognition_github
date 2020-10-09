@@ -313,7 +313,7 @@ https://github.com/MasteringOpenCV/code/blob/master/Chapter8_FaceRecognition/pre
 		@param faceDetector the face detector
 		@param embedderModel a path for the embedder model (.t7)
 		@param svmModel a path for the SVM model (folder)
-		@param nameTxt a path for the names of the people labeled (.txt)
+		@param nameTxt a path for the names of the people labeled (.txt) 
 
 		*/
 		FaceRecognition::FaceRecognition(std::string embedderModel, std::string svmModel, std::string nameTxt){
@@ -391,7 +391,7 @@ https://github.com/MasteringOpenCV/code/blob/master/Chapter8_FaceRecognition/pre
 		*/
 		std::pair<std::string,float> FaceRecognition::recognize(cv::Mat &img, cv::Rect &rectFace){
 			cv::Mat face;
-			int minFrequency = (int)labels.size() - 2;
+			int minFrequency = (int)labels.size() - 2
 			std::cout << "min frequency = " <<  minFrequency << std::endl;
 			if(!preprocessedFace(img , face , rectFace)){
 				std::cout << "0" << std::endl;
@@ -400,7 +400,10 @@ https://github.com/MasteringOpenCV/code/blob/master/Chapter8_FaceRecognition/pre
 				return make_pair(fail,failConfidence);
 			}
 			std::cout << "1" << std::endl;
+			std::cout <<"face: " << face.size << std::endl;
 			cv::Mat blob =  cv::dnn::blobFromImage(face, 1.0/255.0, cv::Size(96, 96) , cv::Scalar(0, 0, 0));
+			std::cout << "blob: " << blob << std::endl;
+			std::cout << "1.5" << std::endl;
 			faceEmbedder.setInput(blob);
 			cv::Mat embeddings = faceEmbedder.forward();
 			std::cout << "2" << std::endl;

@@ -14,7 +14,7 @@ int main() {
 	
 	recognizer.train(trainPath, RECOGNITION_WEIGHTS);
 	
-	std::string svmModel = "/media/disk/svmModel/recognizer.xml";
+	std::string svmModel = "/media/disk/svmModel/recognizer.xml";  
 	*/
 	std::string labelsTxt = "/media/disk/svmModel/labels.txt";
 	

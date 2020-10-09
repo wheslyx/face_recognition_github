@@ -40,7 +40,7 @@
 #endif
 
 #ifndef RECOGNITION_WEIGHTS
-#define RECOGNITION_WEIGHTS "/media/disk/svmModel"
+#define RECOGNITION_WEIGHTS "/var/fcs_res/svmModel"
 #endif
 
 #ifndef RECOGNITION_THRESHOLD
