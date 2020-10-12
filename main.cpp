@@ -23,7 +23,7 @@ int main() {
 	
 	//real time
 	std::string pathInputVideo = "";
-	std::string pathOutputVideo= "/media/disk/video_test/face_recognition.avi";
+	std::string pathOutputVideo= "";
 
 	// This is the run video attribute
 	cv::VideoCapture cap;
