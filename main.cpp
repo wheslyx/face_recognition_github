@@ -82,7 +82,7 @@ int main() {
 			cv::putText(frame , name, cv::Point(rectFace.x, yDraw),cv::FONT_HERSHEY_SIMPLEX, 0.45, cv::Scalar(0, 255, 0), 2);
 			cv::putText(frame, std::to_string( (int) (recognition_confidence*100)), cv::Point(xDraw, yDraw), cv::FONT_HERSHEY_SIMPLEX, 0.45, cv::Scalar(0,255,0),2);
 		}
-		cv::imshow(frame);
+		cv::imshow("on air",frame);
 		if(!pathOutputVideo.empty()){
 			video.write(frame);
 		} 
