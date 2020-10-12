@@ -29,6 +29,7 @@ int main() {
 	cv::VideoCapture cap;
 	if(pathInputVideo.empty()){
 		cap = cv::VideoCapture(0);
+		cv::cvtColor(_frame_cpu, _frame_cpu, cv::COLOR_BGR2GRAY);
 	} else{
 		cap = cv::VideoCapture(pathInputVideo);
 	}
