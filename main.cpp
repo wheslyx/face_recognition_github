@@ -51,7 +51,7 @@ int main() {
 	while(true){
 		cv::Mat frame;
 		cap >> frame;
-		cv::cvtColor(frame, frame, cv::COLOR_BGR2GRAY);
+
 		if(frame.empty()){
 			break;
 		}
@@ -63,6 +63,7 @@ int main() {
 		cv::Rect rectFace = rectFaces[0];
 		std::cout << "rectangle : " << rectFace << std::endl;
 		long double startrun = recognizer.getTime();
+		cv::cvtColor(frame, frame, cv::COLOR_BGR2GRAY);
 		std::pair<std::string,float> prediction = recognizer.recognize(frame, rectFace);
 		long double endrun = recognizer.getTime();
 		std::string name = prediction.first;
